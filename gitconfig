@@ -1,0 +1,30 @@
+[init]
+  templatedir = ~/.git_template
+[user]
+  name = Bruno Azevedo
+  email = azevedo.252@gmail.com
+[alias]
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset' --abbrev-commit
+  conflicts = diff --name-only --diff-filter=U
+  delete = !git branch -D "$1" && git push origin :"$1"
+  s = status
+  co = checkout
+  b = branch
+  ci = commit
+  rso = remote show origin
+  d = diff
+  p = push
+  r = rebase
+  f = fetch
+[color]
+  ui = true
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore
+[push]
+  default = current
+[fetch]
+  prune = true
+[status]
+  short = 1

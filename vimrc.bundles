@@ -1,0 +1,39 @@
+if &compatible
+  set nocompatible              " be iMproved
+end
+
+filetype off                  " required!
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+
+" let Vundle manage Vundle
+Plugin 'gmarik/Vundle.vim'
+
+" original repos on GitHub
+Plugin 'tpope/vim-rails.git'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'christoomey/vim-conflicted'
+Plugin 'skwp/greplace.vim'
+Plugin 'thoughtbot/vim-rspec'
+" Plugin 'ecomba/vim-ruby-refactoring'
+" Plugin 'tpope/vim-dispatch'
+" Plugin 'Lokaltog/vim-easymotion'
+Plugin 'vim-scripts/tComment'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'rking/ag.vim'
+Plugin 'slim-template/vim-slim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+" vim-scripts repos
+Plugin 'L9'
+" Plugin 'FuzzyFinder'
+
+if filereadable(expand("~/.vimrc.bundles.local"))
+  source ~/.vimrc.bundles.local
+endif
+
+call vundle#end()
+filetype on

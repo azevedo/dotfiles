@@ -1,0 +1,73 @@
+## ManjaroBox Conky Configuration Script
+##
+## Written by Carl Duff & Ugo Yak
+## Website: www.manjaro.org - Forum: http://forum.manjaro.org/
+##
+
+#  Basic Settings
+
+background yes
+use_xft yes
+xftfont sans:size=11
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type override #desktop
+own_window_hints below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 450 1
+maximum_width 600
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color Blue
+default_shade_color BEBEBE
+default_outline_color d9d7d6
+alignment tr
+gap_x 5
+gap_y 20
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale yes
+
+## ManjaroBang Conky Display
+##
+## Note - if internet connection speeds do not show, then enter 'ip addr' into the terminal
+## to identify your correct Wireless and Ethernet connection names (e.g. wlo1, eno1)
+##
+TEXT
+${font sans:bold:size=14}${color #BEBEBE}${exec whoami} ${alignr}${color #35BF5C}linux-$kernel${voffset 8}
+${font sans:bold:size=18}${color #35BF5C}${time %e} ${color #BEBEBE}${time %B}${color #35BF5C} ${time %Y} ${color #BEBEBE}${time %k:%M:%S}${voffset -8}
+${hr 1}${voffset -4}
+${font sans:bold:size=9}${color #35BF5C}CPU Usage: ${color #BEBEBE}${cpu cpu0}% ${cpugraph 25 B22222 BEBEBE}
+${color #35BF5C}RAM Usage: ${color #BEBEBE}$mem ${color #B22222} / ${color #BEBEBE}$memmax - $memperc% ${color #35BF5C}$membar${voffset 2}
+
+${color #35BF5C}/    ${color #BEBEBE}${fs_used /} ${color #B22222} / ${color #BEBEBE} ${fs_size /} ${alignr}${color #35BF5C}${fs_bar 5,300 /}${voffset 2}
+${color #35BF5C}home ${color #BEBEBE}${fs_used /home} ${color #B22222} / ${color #BEBEBE} ${fs_size /home} ${alignr}${color #35BF5C}${fs_bar 5,300 /home}${voffset 2}
+
+${color #35BF5C}Down:${color #BEBEBE} ${downspeed wlp4s0}/s${color #35BF5C}${offset 80}Up:${color #BEBEBE} ${upspeed wlp4s0}/s
+# ${color #B22222}${downspeedgraph wlp4s0 32,150 BEBEBE 35BF5C} ${color #B22222}${upspeedgraph wlp4s0 32,150 BEBEBE 35BF5C}
+${color #35BF5C}Address: ${color #BEBEBE}${addr wlp4s0}${alignr}${color #35BF5C}TCP Connections: ${color #BEBEBE}${tcp_portmon 1 65535 count}
+
+${color #35BF5C}Battery: ${color #BEBEBE}$battery_percent%  ($acpiacadapter)${voffset 2}
+${color #35BF5C}Uptime: ${color #BEBEBE}$uptime_short${voffset 2}
+${color #35BF5C}Desktop: ${color #BEBEBE}$desktop${voffset 3}
+${hr 1}${voffset 6}
+${alignr}${color #35BF5C}Super + d
+${alignr}${color #BEBEBE}Toggle Desktop${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Super + f
+${alignr}${color #BEBEBE}File Manager${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Super + s
+${alignr}${color #BEBEBE}Synapse${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Super + t
+${alignr}${color #BEBEBE}Terminal${voffset -5}
+
+${font sans:bold:size=9}${alignr}${color #35BF5C}Super + x
+${alignr}${color #BEBEBE}Logout...
