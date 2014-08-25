@@ -1,2 +1,2 @@
-EXCLUDES="README.md LICENSE Brewfile ranger terminator openbox tint2rc"
+EXCLUDES="README.md LICENSE Brewfile samples ranger terminator openbox tint2rc conkyrc asoundrc bashrc bash_profile"
 DOTFILES_DIRS="$HOME/dotfiles-local $HOME/dotfiles"
