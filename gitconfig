@@ -7,7 +7,7 @@
   lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
   lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset' --abbrev-commit
   conflicts = diff --name-only --diff-filter=U
-  delete = !git branch -D "$1" && git push origin :"$1"
+  delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
   s = status
   co = checkout
   b = branch
