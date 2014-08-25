@@ -69,7 +69,7 @@ export PATH=".git/safe/../../bin:$PATH"
 export DEFAULT_USER=bruno
 export PATH=./node_modules/.bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export CDPATH=$HOME/Documents/gb
+export CDPATH=.:$HOME/Documents/gb
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases

@@ -17,6 +17,7 @@
   p = push
   r = rebase
   f = fetch
+  a = add
 [color]
   ui = true
 [core]
