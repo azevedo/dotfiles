@@ -1,0 +1,2 @@
+EXCLUDES="README.md LICENSE Brewfile ranger terminator openbox tint2rc"
+DOTFILES_DIRS="$HOME/dotfiles-local $HOME/dotfiles"
