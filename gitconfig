@@ -11,13 +11,17 @@
   s = status
   co = checkout
   b = branch
-  ci = commit
+  ci = commit -v
   rso = remote show origin
   d = diff
   p = push
   r = rebase
   f = fetch
   a = add
+  aa = add -A
+  sta = stash
+  stp = pop
+  up = !git fetch && git rebase
 [color]
   ui = true
 [core]

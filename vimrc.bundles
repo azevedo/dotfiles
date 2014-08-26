@@ -10,6 +10,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " original repos on GitHub
+Plugin 'croaky/vim-colors-github'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
@@ -25,7 +26,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'rking/ag.vim'
 Plugin 'slim-template/vim-slim'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/base16-vim'
 Plugin 'bling/vim-airline'
 " vim-scripts repos
 Plugin 'L9'

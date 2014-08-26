@@ -128,9 +128,13 @@ endif
 " Enable syntax highlighting
 syntax enable
 
-set t_Co=256
+" set t_Co=256
 set background=dark
-colorscheme solarized
+colorscheme base16-codeschool
+" colorscheme solarized
+" colorscheme github
+" highlight NonText guibg=#060606
+" highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
