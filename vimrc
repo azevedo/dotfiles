@@ -407,6 +407,12 @@ endfunction
 set stl+=%{ConflictedVersion()}
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Dash.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <silent> <leader>d <Plug>DashSearch
+
+
 " Local config
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local

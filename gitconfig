@@ -20,7 +20,7 @@
   a = add
   aa = add -A
   sta = stash
-  stp = pop
+  stp = stash pop
   up = !git fetch && git rebase
 [color]
   ui = true
