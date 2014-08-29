@@ -2,11 +2,11 @@
 git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
   if [[ -n $ref ]]; then
-    echo " %{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%}"
+    echo " %{$fg[yellow]%}${ref#refs/heads/}%{$reset_color%}"
   fi
 }
 setopt promptsubst
-export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
+export PS1='${SSH_CONNECTION+"%{$fg_bold[cyan]%}%n@%m:"}%{$fg[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
 
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
@@ -64,12 +64,18 @@ export EDITOR=$VISUAL
 # ensure dotfiles bin directory is loaded first
 export PATH="$HOME/.bin:/usr/local/bin:$PATH"
 
+export DEFAULT_USER=bruno
 # mkdir .git/safe in the root of repositories you trust
 export PATH=".git/safe/../../bin:$PATH"
-export DEFAULT_USER=bruno
+export PATH=$HOME/.bin:$PATH
+# recommended by brew doctor
+export PATH=/usr/local/bin:$PATH
 export PATH=./node_modules/.bin:$PATH
+export PATH=$PATH:/usr/local/lib/node_modules
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export CDPATH=.:$HOME/Documents/gb
+
+source $(brew --prefix nvm)/nvm.sh
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases

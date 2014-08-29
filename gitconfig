@@ -11,11 +11,15 @@
   s = status
   co = checkout
   b = branch
+  ca = commit --amend
   ci = commit -v
   rso = remote show origin
   d = diff
   p = push
   r = rebase
+  ri = rebase -i
+  rc = rebase --continue
+  ra = rebase --abort
   f = fetch
   a = add
   aa = add -A

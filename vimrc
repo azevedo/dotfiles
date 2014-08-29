@@ -128,9 +128,9 @@ endif
 " Enable syntax highlighting
 syntax enable
 
-" set t_Co=256
+set t_Co=16
 set background=dark
-colorscheme base16-codeschool
+colorscheme base16-default
 " colorscheme solarized
 " colorscheme github
 " highlight NonText guibg=#060606
@@ -220,10 +220,10 @@ augroup END
 set viminfo^=%
 
 " Better Navigation
-map <C-right> <ESC>:bp<CR>
-map <C-left> <ESC>:bn<CR>
-map <C-down> <ESC>:tabnext<CR>
-map <C-up> <ESC>:tabprevious<CR>
+map <A-l> <ESC>:bp<CR>
+map <A-h> <ESC>:bn<CR>
+map <A-j> <ESC>:tabnext<CR>
+map <A-k> <ESC>:tabprevious<CR>
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
