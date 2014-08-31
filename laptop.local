@@ -1,22 +1,16 @@
 #!/bin/sh
 
-fancy_echo "Installing reattach-to-user-namespace, for copy-paste and RubyMotion compatibility with tmux ..."
-  brew_install_or_upgrade 'npm'
-
 fancy_echo "Installing karma, a TestRunner for Javascript"
   sudo npm install -g karma-cli
 
 fancy_echo "Installing gpg, for encrypting and signing your data and communication"
   brew install gpg
 
-echo "gem: --no-document" >> ~/.gemrc
 curl -sSL https://get.rvm.io | bash -s stable --rails
 
 fancy_echo "Configuring Bundler for faster, parallel gem installation ..."
   number_of_cores=$(sysctl -n hw.ncpu)
   bundle config --global jobs $((number_of_cores - 1))
-
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 brew tap caskroom/cask
 brew install brew-cask

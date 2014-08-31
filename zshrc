@@ -1,12 +1,10 @@
-# modify the prompt to contain git branch name if applicable
-git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null)
-  if [[ -n $ref ]]; then
-    echo " %{$fg[yellow]%}${ref#refs/heads/}%{$reset_color%}"
-  fi
-}
-setopt promptsubst
-export PS1='${SSH_CONNECTION+"%{$fg_bold[cyan]%}%n@%m:"}%{$fg[blue]%}%c%{$reset_color%}$(git_prompt_info) %# '
+ZSH=$HOME/.zsh
+ZSH_THEME="best"
+
+# prompt theme
+if [ ! "$ZSH_THEME" = ""  ]; then
+  source "$ZSH/themes/$ZSH_THEME.zsh-theme"
+fi
 
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
@@ -46,7 +44,6 @@ unsetopt nomatch
 # vi mode
 bindkey -v
 bindkey "^F" vi-cmd-mode
-bindkey jj vi-cmd-mode
 
 # handy keybindings
 bindkey "^A" beginning-of-line
@@ -75,10 +72,7 @@ export PATH=$PATH:/usr/local/lib/node_modules
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export CDPATH=.:$HOME/Documents/gb
 
-source $(brew --prefix nvm)/nvm.sh
-
 # aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+[ -d "$ZSH/aliases" ] && source "$ZSH/aliases/aliases.zsh"
 
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+source $(brew --prefix nvm)/nvm.sh
