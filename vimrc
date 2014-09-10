@@ -190,13 +190,13 @@ nnoremap <leader><leader> <c-^>
 
 " Save
 nmap :W :w
-map <leader>w :w<CR>
+map <leader>ww :w<CR>
+map <leader>wq :wq<CR>
 
 " Quit
 nmap :Q :q
 map <leader>qq :q<CR>
 map <leader>qa :qa<CR>
-map <leader>wq :wq<CR>
 
 " Search and replace
 noremap <leader>sa :%s:::g<Left><Left>
