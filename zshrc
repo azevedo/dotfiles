@@ -13,6 +13,7 @@ else
   # Must be Linux, determine distro
 fi
 
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Load Antigen
 source ~/.antigen.zsh
@@ -39,10 +40,6 @@ antigen bundle tmuxinator
 
 # ZSH port of Fish shell's history search feature.
 antigen bundle zsh-users/zsh-history-substring-search
-# bind UP and DOWN arrow keys
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
@@ -69,12 +66,6 @@ antigen apply
 
 
 MY_ZSH=$HOME/.zsh
-# ZSH_THEME="best"
-#
-# # prompt theme
-# if [ ! "$ZSH_THEME" = ""  ]; then
-#   source "$MY_ZSH/themes/$ZSH_THEME.zsh-theme"
-# fi
 #
 # load our own completion functions
 fpath=($MY_ZSH/completion $fpath)
@@ -115,12 +106,9 @@ export EDITOR=$VISUAL
 export DEFAULT_USER=bruno
 
 # ensure dotfiles bin directory is loaded first
-export PATH="$HOME/.bin:/usr/local/bin:$PATH"
 # recommended by brew doctor
-export PATH=/usr/local/bin:$PATH
-export PATH=./node_modules/.bin:$PATH
-export PATH=$PATH:/usr/local/lib/node_modules
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH="$HOME/.bin:/usr/local/bin:$PATH"
+export PATH=$PATH:./node_modules/.bin:/usr/local/lib/node_modules
 export CDPATH=.:$HOME/Documents/gb
 
 # aliases

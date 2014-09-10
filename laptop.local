@@ -6,6 +6,9 @@ fancy_echo "Installing karma, a TestRunner for Javascript"
 fancy_echo "Installing gpg, for encrypting and signing your data and communication"
   brew install gpg
 
+fancy_echo "Installing mongodb"
+  brew install mongodb
+
 curl -sSL https://get.rvm.io | bash -s stable --rails
 
 fancy_echo "Configuring Bundler for faster, parallel gem installation ..."
@@ -31,3 +34,4 @@ brew cask install transmission
 brew cask install tvshows
 brew cask install caffeine
 brew cask install spectacle
+brew cask install bettertouchtool

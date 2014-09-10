@@ -170,7 +170,7 @@ map <space> /
 map <c-space> ?
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>
+map <leader>bd :bdelete<cr>
 
 " Close all buffers
 map <leader>ba :bufdo :bd<cr>
@@ -196,6 +196,7 @@ map <leader>w :w<CR>
 nmap :Q :q
 map <leader>qq :q<CR>
 map <leader>qa :qa<CR>
+map <leader>wq :wq<CR>
 
 " Search and replace
 noremap <leader>sa :%s:::g<Left><Left>

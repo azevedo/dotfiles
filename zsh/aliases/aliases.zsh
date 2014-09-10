@@ -32,6 +32,3 @@ alias rk="rake"
 alias s="rspec"
 alias rs='bundle exec rails server'
 alias rc='bundle exec rails console'
-
-# Include custom aliases
-[[ -f ~/.aliases.local ]] && source ~/.aliases.local

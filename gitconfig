@@ -26,6 +26,7 @@
   sta = stash
   stp = stash pop
   up = !git fetch && git rebase
+  m = merge
 [color]
   ui = true
 [core]
