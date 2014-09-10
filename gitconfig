@@ -4,7 +4,7 @@
   name = Bruno Azevedo
   email = azevedo.252@gmail.com
 [alias]
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  l = log
   lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset' --abbrev-commit
   conflicts = diff --name-only --diff-filter=U
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
