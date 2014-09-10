@@ -13,8 +13,6 @@ else
   # Must be Linux, determine distro
 fi
 
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 # Load Antigen
 source ~/.antigen.zsh
 
@@ -59,24 +57,9 @@ elif [[ $CURRENT_OS == 'Linux' ]]; then
     # None so far...
 fi
 
-#TODO: some day create and move things to this repo (see: https://github.com/jdavis/zsh-files)
-# antigen bundle azevedo-252/zsh-files
+antigen bundle azevedo-252/zsh-files
 
 antigen apply
-
-
-MY_ZSH=$HOME/.zsh
-#
-# load our own completion functions
-fpath=($MY_ZSH/completion $fpath)
-
-# load custom executable functions
-source $MY_ZSH/functions/change-extension
-source $MY_ZSH/functions/chpwd
-# source $MY_ZSH/functions/g
-source $MY_ZSH/functions/killit
-source $MY_ZSH/functions/mcd
-source $MY_ZSH/functions/psgrep
 
 # history settings
 setopt hist_ignore_all_dups inc_append_history
@@ -100,18 +83,8 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
-# use vim as the visual editor
-export VISUAL=vim
-export EDITOR=$VISUAL
 export DEFAULT_USER=bruno
 
-# ensure dotfiles bin directory is loaded first
-# recommended by brew doctor
-export PATH="$HOME/.bin:/usr/local/bin:$PATH"
-export PATH=$PATH:./node_modules/.bin:/usr/local/lib/node_modules
 export CDPATH=.:$HOME/Documents/gb
-
-# aliases
-[ -d "$MY_ZSH/aliases" ] && source "$MY_ZSH/aliases/aliases.zsh"
 
 source $(brew --prefix nvm)/nvm.sh

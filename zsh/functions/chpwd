@@ -1,6 +1,0 @@
-# Calls ls after changing path
-
-function chpwd() {
-  emulate -L zsh
-  ls
-}
