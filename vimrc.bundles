@@ -19,6 +19,8 @@ Plugin 'ecomba/vim-ruby-refactoring'
 " Plugin 'honza/vim-snippets'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'pangloss/vim-javascript'
 Plugin 'rizzatti/dash.vim'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
@@ -176,6 +178,15 @@ nmap <silent> <leader>d <Plug>DashSearch
 "
 " " To open tag in preview window: C-w }
 
+""""""""""""""""""""""""""""""
+" => vim-javascript
+""""""""""""""""""""""""""""""
+let g:javascript_enable_domhtmlcss = 1
+
+""""""""""""""""""""""""""""""
+" => javascript-libraries-syntax
+""""""""""""""""""""""""""""""
+let g:used_javascript_libs = 'angularjs,jasmine,chai'
 
 call vundle#end()
 filetype on

@@ -1,9 +1,5 @@
-#
 # OS Detection
-#
 UNAME=`uname`
-
-# Fallback info
 CURRENT_OS='Linux'
 DISTRO=''
 

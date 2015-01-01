@@ -176,8 +176,8 @@ map <leader>bd :bdelete<cr>
 map <leader>ba :bufdo :bd<cr>
 
 " Better Navigation
-map <A-j> <ESC>:tabnext<CR>
-map <A-k> <ESC>:tabprevious<CR>
+map tt <ESC>:tabnext<CR>
+map TT <ESC>:tabprevious<CR>
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
@@ -336,5 +336,38 @@ augroup vimrcEx
        \ endif
 
   " Allow stylesheets to autocomplete hyphenated words
-  autocmd FileType css,scss,sass setlocal iskeyword+=-
+  autocmd FileType css,scss,sass,haml,slim setlocal iskeyword+=-
 augroup END
+
+""""""""""""""""""""""""""""""
+" => Copy current file name (relative/absolute) to system clipboard
+""""""""""""""""""""""""""""""
+" (Mac version)
+if has("mac") || has("gui_macvim") || has("gui_mac")
+  " relative path  (src/foo.txt)
+  nnoremap <leader>yp :let @*=expand("%")<CR>
+
+  " absolute path  (/something/src/foo.txt)
+  nnoremap <leader>yP :let @*=expand("%:p")<CR>
+
+  " filename       (foo.txt)
+  nnoremap <leader>yf :let @*=expand("%:t")<CR>
+
+  " directory name (/something/src)
+  nnoremap <leader>yd :let @*=expand("%:p:h")<CR>
+endif
+
+" (Linux version)
+if has("gui_gtk") || has("gui_gtk2") || has("gui_gnome") || has("unix")
+  " relative path (src/foo.txt)
+  nnoremap <leader>yp :let @+=expand("%")<CR>
+
+  " absolute path (/something/src/foo.txt)
+  nnoremap <leader>yP :let @+=expand("%:p")<CR>
+
+  " filename (foo.txt)
+  nnoremap <leader>yf :let @+=expand("%:t")<CR>
+
+  " directory name (/something/src)
+  nnoremap <leader>yd :let @+=expand("%:p:h")<CR>
+endif
