@@ -12,6 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'L9'
 Plugin 'bling/vim-airline'
+Plugin 'azevedo-252/vim-angular'
 Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-conflicted'
 Plugin 'ecomba/vim-ruby-refactoring'
@@ -187,6 +188,16 @@ let g:javascript_enable_domhtmlcss = 1
 " => javascript-libraries-syntax
 """"""""""""""""""""""""""""""
 let g:used_javascript_libs = 'angularjs,jasmine,chai'
+
+""""""""""""""""""""""""""""""
+" => vim-angular
+""""""""""""""""""""""""""""""
+" Ignore these folders when searching
+let g:angular_find_ignore = ['build/']
+" Assumes a snakecase convention when searching
+let g:angular_filename_convention = 'snakecased'
+" Replaces mocha keywords for running isolated specs
+let g:angular_testing_framework = 'mocha'
 
 call vundle#end()
 filetype on
