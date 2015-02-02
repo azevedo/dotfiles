@@ -34,6 +34,7 @@ antigen bundle tmuxinator
 
 # ZSH port of Fish shell's history search feature.
 antigen bundle zsh-users/zsh-history-substring-search
+
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down

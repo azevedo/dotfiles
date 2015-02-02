@@ -243,7 +243,8 @@ filetype plugin indent on     " required!
 """""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""
-set t_Co=16
+set t_Co=256
+let base16colorspace=256  " Access colors present in 256 colorspace
 set background=dark
 colorscheme base16-default
 
