@@ -287,6 +287,12 @@ if ! has('gui_running')
   augroup END
 endif
 
+" New File types
+autocmd BufRead,BufNewFile *.es6 setfiletype javascript
+
+" Adds spell checking and automatic wrapping at the recommended 72 columns to commit messages
+autocmd Filetype gitcommit setlocal textwidth=72
+
 " Function to hide all the text except for the text selected in visual mode.
 " This is great for highlighting parts of the code. Just call the function
 " again to deselect everything.
@@ -309,13 +315,16 @@ function! ToggleSelected(visual) range
   let [lnum2, col2] = getpos("'>")[1:2]
 
   let pattern = '\%^\|\%<'.lnum1.'l\|\%<'.col1.'v\|\%>'.lnum2.'l\|\%>'.col2.'v'
-  letsg:toggle_selected_hide = matchadd('HideSelected', pattern, 1000)
+  let g:toggle_selected_hide = matchadd('HideSelected', pattern, 1000)
 
   redraw
 endfunction
 " Show only selected in Visual Mode
 nmap <silent> <leader>th :cal ToggleSelected(0)<cr>
 vmap <silent> <leader>th :cal ToggleSelected(1)<cr>
+
+" Highlights columns 80 onwards
+" let &colorcolumn=join(range(81,999),",")
 
 """"""""""""""""""""""""""""""
 " => Text, tab and indent related

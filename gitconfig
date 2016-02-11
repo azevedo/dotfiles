@@ -4,29 +4,32 @@
   name = Bruno Azevedo
   email = azevedo.252@gmail.com
 [alias]
-  l = log
-  lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset' --abbrev-commit
-  conflicts = diff --name-only --diff-filter=U
-  delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
-  s = status
-  co = checkout
+  a = add
+  aa = add -A
   b = branch
   ca = commit --amend
   ci = commit -v
-  rso = remote show origin
+  cleanup = !git remote prune origin && git gc && git clean -dfx && git stash clear
+  co = checkout
+  conflicts = diff --name-only --diff-filter=U
   d = diff
+  dbr = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
+  done = !git fetch && git rebase -i master && git checkout master && git merge @{-1}
+  f = fetch
+  l = log
+  lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset' --abbrev-commit
+  m = merge
+  mt = mergetool                    # fire up the merge tool
   p = push
   r = rebase
-  ri = rebase -i
-  rc = rebase --continue
   ra = rebase --abort
-  f = fetch
-  a = add
-  aa = add -A
+  rc = rebase --continue
+  ri = rebase -i
+  rso = remote show origin
+  s = status
   sta = stash
   stp = stash pop
   up = !git fetch && git rebase
-  m = merge
 [color]
   ui = true
 [core]
@@ -38,3 +41,15 @@
   prune = true
 [status]
   short = 1
+[help]
+  autocorrect = 1
+[mergetool "vimdiff"]
+  cmd = vimdiff -f $LOCAL $MERGED $REMOTE
+[mergetool]
+  prompt = false
+  keepBackup = false
+  trustExitCode = false
+[merge]
+  tool = vimdiff
+[commit]
+  template = ~/.gitmessage

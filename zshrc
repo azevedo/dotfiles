@@ -15,6 +15,9 @@ source ~/.antigen.zsh
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
+# Dependency if pure
+antigen bundle mafredri/zsh-async
+
 # Antigen Theme
 antigen bundle sindresorhus/pure
 

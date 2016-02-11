@@ -10,36 +10,41 @@ call vundle#begin()
 " let Vundle manage Vundle
 Plugin 'gmarik/Vundle.vim'
 
+" Plugin 'FuzzyFinder'
+" Plugin 'SirVer/ultisnips'
+" Plugin 'honza/vim-snippets'
+" Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'tpope/vim-dispatch'
+" Plugin 'vim-scripts/ctags.vim'
 Plugin 'L9'
+" Plugin 'azevedo-252/vim-angular'
 Plugin 'bling/vim-airline'
-Plugin 'azevedo-252/vim-angular'
 Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-conflicted'
 Plugin 'ecomba/vim-ruby-refactoring'
-" Plugin 'FuzzyFinder'
-" Plugin 'honza/vim-snippets'
+Plugin 'kana/vim-textobj-user'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
+Plugin 'ktonga/vim-follow-my-lead'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'mxw/vim-jsx'
 Plugin 'nicholaides/words-to-avoid.vim'
-Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'rizzatti/dash.vim'
+Plugin 'reedes/vim-textobj-quote'
+Plugin 'reedes/vim-wordy'
+" Plugin 'rizzatti/dash.vim'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'SirVer/ultisnips'
 Plugin 'skwp/greplace.vim'
 Plugin 'slim-template/vim-slim'
-" Plugin 'terryma/vim-multiple-cursors'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tmhedberg/matchit'
-" Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails.git'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
-" Plugin 'vim-scripts/ctags.vim'
 Plugin 'vim-scripts/tComment'
 
 
@@ -186,19 +191,31 @@ nmap <silent> <leader>d <Plug>DashSearch
 let g:javascript_enable_domhtmlcss = 1
 
 """"""""""""""""""""""""""""""
-" => javascript-libraries-syntax
-""""""""""""""""""""""""""""""
-let g:used_javascript_libs = 'angularjs,jasmine,chai'
-
-""""""""""""""""""""""""""""""
 " => vim-angular
 """"""""""""""""""""""""""""""
-" Ignore these folders when searching
-let g:angular_find_ignore = ['build/']
-" Assumes a snakecase convention when searching
-let g:angular_filename_convention = 'snakecased'
-" Replaces mocha keywords for running isolated specs
-let g:angular_testing_framework = 'mocha'
+" " Ignore these folders when searching
+" let g:angular_find_ignore = ['build/']
+" " Assumes a snakecase convention when searching
+" let g:angular_filename_convention = 'snakecased'
+" " Replaces mocha keywords for running isolated specs
+" let g:angular_testing_framework = 'mocha'
+
+""""""""""""""""""""""""""""""
+" => vim-wordy
+""""""""""""""""""""""""""""""
+" filetype plugin on
+" augroup textobj_quote
+"   autocmd!
+"   autocmd FileType markdown call textobj#quote#init()
+"   autocmd FileType textile call textobj#quote#init()
+"   autocmd FileType text call textobj#quote#init({'educate': 0})
+" augroup END
+
+""""""""""""""""""""""""""""""
+" => mxw/vim-jsx
+""""""""""""""""""""""""""""""
+" JSX in .js files
+let g:jsx_ext_required = 0
 
 call vundle#end()
 filetype on
