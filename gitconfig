@@ -15,6 +15,7 @@
   d = diff
   dbr = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
   done = !git fetch && git rebase -i master && git checkout master && git merge @{-1}
+  dm = "!git branch --merged | egrep -v \"(^\\*|master|dev)\" | xargs -n 1 git dbr "   # delete all merged branches using "git dbr"
   f = fetch
   l = log
   lg = log --color --graph --date=short --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ad) %C(blue)[%an]%Creset' --abbrev-commit
