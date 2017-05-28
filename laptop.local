@@ -1,8 +1,5 @@
 #!/bin/sh
 
-fancy_echo "Installing karma, a TestRunner for Javascript"
-  sudo npm install -g karma-cli
-
 fancy_echo "Installing gpg, for encrypting and signing your data and communication"
   brew install gpg
 
@@ -22,16 +19,13 @@ brew cask install iterm2
 brew cask install google-chrome
 brew cask install firefox
 brew cask install slack
-brew cask install hipchat
 brew cask install alfred
 
 brew cask install dropbox
 brew cask install spotify
 brew cask install skype
 brew cask install vlc
-brew cask install subtitles
 brew cask install transmission
-brew cask install tvshows
 brew cask install caffeine
 brew cask install spectacle
-brew cask install bettertouchtool
+brew cask install diff-so-fancy
