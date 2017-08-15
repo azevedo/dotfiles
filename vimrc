@@ -9,9 +9,6 @@ if os == 'Darwin' || os == 'Mac'
   let s:OS = 'osx'
 endif
 
-let s:plugins=isdirectory(expand("~/.vim/bundle/Vundle.vim", 1))
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Global settings (set, let)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -219,26 +216,9 @@ nmap Q q
 " => Custom Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""
-" -> Vundle
+" -> Plugins
 """"""""""""""""""""""""""""""""
-if s:plugins
-  if filereadable(expand("~/.vimrc.bundles"))
-    source ~/.vimrc.bundles
-  endif
-else
-  " Bootstrap Vundle on new systems
-  fun! InstallVundle()
-      silent call mkdir(expand('~/.vim/bundle', 1), 'p')
-      silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  endfun
-
-  " Instead of install packages, install Vundle
-  nmap <leader>vi :call InstallVundle()<cr>
-endif
-
-" Load plugins and indent for the filtype
-" **Must be last for Vundle**
-filetype plugin indent on     " required!
+source ~/.vimrc.bundles
 
 """""""""""""""""""""""""""
 " => Colors and Fonts

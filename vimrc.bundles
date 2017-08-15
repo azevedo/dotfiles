@@ -2,57 +2,58 @@ if &compatible
   set nocompatible              " be iMproved
 end
 
-filetype off                  " required!
-" Vundle is the new god among plugins
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
-" Plugin 'FuzzyFinder'
-" Plugin 'SirVer/ultisnips'
-" Plugin 'honza/vim-snippets'
-" Plugin 'terryma/vim-multiple-cursors'
-" Plugin 'tpope/vim-dispatch'
-" Plugin 'vim-scripts/ctags.vim'
-" Plugin 'azevedo-252/vim-angular'
-" Plugin 'rizzatti/dash.vim'
-Plugin 'L9'
-Plugin 'chriskempson/base16-vim'
-Plugin 'christoomey/vim-conflicted'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'ecomba/vim-ruby-refactoring'
-Plugin 'gavocanov/vim-js-indent'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'kien/ctrlp.vim'
-Plugin 'ktonga/vim-follow-my-lead'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'mhinz/vim-startify'
-Plugin 'mxw/vim-jsx'
-Plugin 'nicholaides/words-to-avoid.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'reedes/vim-textobj-quote'
-Plugin 'reedes/vim-wordy'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'skwp/greplace.vim'
-Plugin 'slim-template/vim-slim'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'tmhedberg/matchit'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails.git'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-scripts/tComment'
-Plugin 'w0rp/ale'
-Plugin 'wellle/targets.vim'
+" Plug 'FuzzyFinder'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'tpope/vim-dispatch'
+" Plug 'vim-scripts/ctags.vim'
+" Plug 'azevedo-252/vim-angular'
+" Plug 'rizzatti/dash.vim'
+Plug 'vim-scripts/L9'
+Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-conflicted'
+Plug 'digitaltoad/vim-pug'
+Plug 'ecomba/vim-ruby-refactoring'
+Plug 'gavocanov/vim-js-indent'
+Plug 'kana/vim-textobj-user'
+Plug 'kchmck/vim-coffee-script'
+Plug 'kien/ctrlp.vim'
+Plug 'ktonga/vim-follow-my-lead'
+Plug 'leafgarland/typescript-vim'
+Plug 'mhinz/vim-startify'
+Plug 'mxw/vim-jsx'
+Plug 'nicholaides/words-to-avoid.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'reedes/vim-textobj-quote'
+Plug 'reedes/vim-wordy'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'skwp/greplace.vim'
+Plug 'slim-template/vim-slim'
+Plug 'thoughtbot/vim-rspec'
+Plug 'tmhedberg/matchit'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/tComment'
+Plug 'w0rp/ale'
+Plug 'wellle/targets.vim'
 
+call plug#end()
 
 """""""""""""""""""""""""""
 " => nerdtree
@@ -144,7 +145,7 @@ set stl+=%{ConflictedVersion()}
 """"""""""""""""""""""""""""""
 " dash.vim
 """"""""""""""""""""""""""""""
-nmap <silent> <leader>d <Plug>DashSearch
+" nmap <silent> <leader>d <Plug>DashSearch
 
 
 """"""""""""""""""""""""""""""
@@ -220,7 +221,6 @@ let g:javascript_enable_domhtmlcss = 1
 """"""""""""""""""""""""""""""
 " => vim-wordy
 """"""""""""""""""""""""""""""
-" filetype plugin on
 " augroup textobj_quote
 "   autocmd!
 "   autocmd FileType markdown call textobj#quote#init()
@@ -233,6 +233,3 @@ let g:javascript_enable_domhtmlcss = 1
 """"""""""""""""""""""""""""""
 " JSX in .js files
 let g:jsx_ext_required = 0
-
-call vundle#end()
-filetype on
