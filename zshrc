@@ -87,4 +87,5 @@ export DEFAULT_USER=bruno
 
 export CDPATH=.:$HOME/Documents/gb
 
+export NVM_DIR="$HOME/.nvm"
 source $(brew --prefix nvm)/nvm.sh
