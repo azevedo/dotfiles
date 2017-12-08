@@ -1,16 +1,33 @@
 dotfiles
 ========
 
-Configure:
+Install
+-------
 
-Although not required, you may want to start by creating your own `.rcrc` from the sample:
+Clone onto your laptop:
 
-    cp dotfiles/rcrc $HOME/.rcrc
+    git clone git://github.com/azevedo-252/dotfiles.git ~/dotfiles
 
-Install:
+If not already, install [rcm](https://github.com/thoughtbot/rcm):
 
-    rcup
+    brew tap thoughtbot/formulae
+    brew install rcm
 
-Or, if you did not configure your `.rcrc` file, as described above:
+Install the dotfiles:
 
-    rcup -d dotfiles -x README.md -x LICENSE -x Brewfile -x samples other
+    env RCRC=$HOME/dotfiles/rcrc rcup
+
+After the initial installation, you can run `rcup` without the one-time variable
+`RCRC` being set (`rcup` will symlink the repo's `rcrc` to `~/.rcrc` for future
+runs of `rcup`).
+
+This command will create symlinks for config files in your home directory.
+Setting the `RCRC` environment variable tells `rcup` to use standard
+configuration options:
+
+* Exclude the `README.md` and `LICENSE` files, which are part of
+  the `dotfiles` repository but do not need to be symlinked in.
+* Give precedence to personal overrides which by default are placed in
+  `~/dotfiles-local`
+* Please configure the `rcrc` file if you'd like to make personal
+  overrides in a different directory
