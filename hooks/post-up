@@ -1,5 +1,7 @@
 #!/bin/sh
 
+$DOTFILES="$HOME/dotfiles"
+
 touch "$HOME"/.psqlrc.local
 
 if [ -e "$HOME"/.vim/autoload/plug.vim ]; then
@@ -18,5 +20,11 @@ if which brew >/dev/null 2>&1; then
 else
 	curl -sL https://git.io/antibody | sh -s
 fi
-antibody bundle <"$HOME/dotfiles/antibody/bundles.txt" >~/.zsh_plugins.sh
+antibody bundle <"$DOTFILES/antibody/bundles.txt" >~/.zsh_plugins.sh
 antibody update
+
+[ "$(uname -s)" != "Darwin" ] && exit 0
+sed -i ''  "s;/Users/bruno;$HOME;g" \
+	"$DOTFILES"/iterm2/com.googlecode.iterm2.plist
+defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "$DOTFILES/iterm2"
+defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
