@@ -28,3 +28,5 @@ sed -i ''  "s;/Users/bruno;$HOME;g" \
 	"$DOTFILES"/iterm2/com.googlecode.iterm2.plist
 defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "$DOTFILES/iterm2"
 defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
+
+mv "$DOTFILES"/iterm2/fonts/**/*.ttf "$HOME"/Library/Fonts
