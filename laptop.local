@@ -1,7 +1,6 @@
 #!/bin/sh
 
 brew tap caskroom/cask
-brew install brew-cask
 
 brew cask install iterm2
 brew cask install slack
@@ -15,7 +14,7 @@ brew cask install skype
 brew cask install vlc
 brew cask install caffeine
 brew cask install spectacle
-brew cask install diff-so-fancy
-brew cask install tree
+brew install diff-so-fancy
+brew install tree
 
 gem install rails --no-ri --no-rdoc
