@@ -34,6 +34,4 @@ bindkey "^N" insert-last-word
 
 export DEFAULT_USER=bruno
 
-export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
 [ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
