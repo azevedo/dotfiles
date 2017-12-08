@@ -24,7 +24,7 @@ antibody bundle <"$DOTFILES/antibody/bundles.txt" >~/.zsh_plugins.sh
 antibody update
 
 [ "$(uname -s)" != "Darwin" ] && exit 0
-sed -i ''  "s;/Users/bruno;$HOME;g" \
+sed -i ''  "s;/Users/brunoazevedo;$HOME;g" \
 	"$DOTFILES"/iterm2/com.googlecode.iterm2.plist
 defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "$DOTFILES/iterm2"
 defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
