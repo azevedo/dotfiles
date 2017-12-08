@@ -1,7 +1,5 @@
 #!/bin/sh
 
-curl -sSL https://get.rvm.io | bash -s stable --rails
-
 brew tap caskroom/cask
 brew install brew-cask
 
@@ -9,6 +7,8 @@ brew cask install iterm2
 brew cask install slack
 brew cask install alfred
 brew cask install dropbox
+brew cask install google-chrome
+brew cask install firefox
 brew cask install spotify
 brew cask install spotify-notifications
 brew cask install skype
@@ -17,3 +17,6 @@ brew cask install caffeine
 brew cask install spectacle
 brew cask install diff-so-fancy
 brew cask install tree
+
+xcode-select --install
+gem install rails --no-ri --no-rdoc
