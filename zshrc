@@ -1,91 +1,38 @@
-# OS Detection
-UNAME=`uname`
-CURRENT_OS='Linux'
-DISTRO=''
+export LSCOLORS='exfxcxdxbxegedabagacad'
+# enable colored output from ls, etc. on FreeBSD-based systems
+export CLICOLOR=true
 
-if [[ $UNAME == 'Darwin' ]]; then
-  CURRENT_OS='OS X'
-else
-  # Must be Linux, determine distro
-fi
+# load antibody plugins
+source ~/.zsh_plugins.sh
 
-# Load Antigen
-source ~/.antigen.zsh
+# history settings
+setopt hist_ignore_all_dups inc_append_history
+HISTFILE=~/.zhistory
+HISTSIZE=10000
+SAVEHIST=10000
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+# If set, this option causes globs which do not match a file to result in an error without running the command. If unset, the command is run with the un-expanded glob. I do a lot of math at the command line and have gotten used to doing things like “5*7” without quoting. Just what I'm used to, but nice that I can customize it.
+unsetopt NOMATCH
 
-# Dependency if pure
-antigen bundle mafredri/zsh-async
-
-# Antigen Theme
-antigen bundle sindresorhus/pure
-
-# Adds several git aliases and increase the completion function provided by zsh
-antigen bundle git
-
-# Heroku Autocomplete
-antigen bundle heroku
-
-# Helper for extracting different types of archives
-antigen bundle extract
-
-antigen bundle tmux
-
-# Manage complex tmux sessions easily
-antigen bundle tmuxinator
-
-# ZSH port of Fish shell's history search feature.
-antigen bundle zsh-users/zsh-history-substring-search
+# VI mode
+bindkey -v
+bindkey "^F" vi-cmd-mode
 
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# Jump around your most used directories, based on 'frecency'
-antigen bundle rupa/z
-
-# OS specific plugins
-if [[ $CURRENT_OS == 'OS X' ]]; then
-    antigen bundle brew
-    antigen bundle brew-cask
-    antigen bundle gem
-elif [[ $CURRENT_OS == 'Linux' ]]; then
-    # None so far...
-fi
-
-antigen bundle azevedo-252/zsh-files
-
-antigen apply
-
-# history settings
-setopt hist_ignore_all_dups inc_append_history
-HISTFILE=~/.zhistory
-HISTSIZE=4096
-SAVEHIST=4096
-
-# Allow [ or ] whereever you want
-unsetopt nomatch
-
-# vi mode
-bindkey -v
-bindkey "^F" vi-cmd-mode
-
 # handy keybindings
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^R" history-incremental-search-backward
 bindkey "^P" history-search-backward
 bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
-bindkey -s "^T" "^[Isudo ^[A" # "t" for "toughguy"
 
 export DEFAULT_USER=bruno
-
-export CDPATH=.:$HOME/Documents/gb
 
 export NVM_DIR="$HOME/.nvm"
 source $(brew --prefix nvm)/nvm.sh
