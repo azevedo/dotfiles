@@ -18,5 +18,4 @@ brew cask install spectacle
 brew cask install diff-so-fancy
 brew cask install tree
 
-xcode-select --install
 gem install rails --no-ri --no-rdoc
