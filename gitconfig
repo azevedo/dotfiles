@@ -17,7 +17,8 @@
   rim = !git co master && git fetch && git rebase && git co - && git rebase -i master
   done = !git rim && git checkout master && git merge @{-1}
   bm = "!git branch --merged | egrep -v \"(^\\*|master|dev)\""
-  dm = "!git bm | xargs -n 1 git nuke "   # delete all merged branches using "git nuke" (git script)
+  dm = "!git bm | xargs -n 1 git nuke"   # delete all merged branches using "git nuke" (git script)
+  en = "!git edit-new"
   f = fetch
   l = log
   lg = !"git lg1"
