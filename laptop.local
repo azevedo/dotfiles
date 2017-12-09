@@ -18,5 +18,6 @@ brew cask install evernote
 brew install diff-so-fancy
 brew install tree
 brew install neovim
+sudo pip2 install --upgrade neovim # plugins like ultisnips require py >= 2.7 or any py3, so we're installing neovim's Python package since homebrew doesn't do this at the moment; check https://neovim.io/doc/user/provider.html#provider-python for more details
 
 gem install rails --no-ri --no-rdoc

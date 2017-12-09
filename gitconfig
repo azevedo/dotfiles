@@ -40,7 +40,7 @@
 [color]
   ui = true
 [core]
-  editor = vim
+  editor = $EDITOR
   excludesfile = ~/.gitignore
 [push]
   default = current
@@ -51,12 +51,14 @@
 [help]
   autocorrect = 1
 [mergetool "vimdiff"]
-  cmd = vimdiff -f $LOCAL $MERGED $REMOTE
+  cmd = nvim -d $LOCAL $MERGED $REMOTE
 [mergetool]
   prompt = false
   keepBackup = false
   trustExitCode = false
 [merge]
+  tool = vimdiff
+[diff]
   tool = vimdiff
 [commit]
   template = ~/.gitmessage
