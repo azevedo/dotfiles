@@ -17,5 +17,6 @@ brew cask install spectacle
 brew cask install evernote
 brew install diff-so-fancy
 brew install tree
+brew install neovim
 
 gem install rails --no-ri --no-rdoc
