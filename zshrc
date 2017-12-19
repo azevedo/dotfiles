@@ -35,3 +35,4 @@ bindkey "^N" insert-last-word
 export DEFAULT_USER=bruno
 
 [ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
+eval "$(direnv hook zsh)"
