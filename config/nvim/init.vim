@@ -75,8 +75,12 @@ endif
 
 Plug 'honza/vim-snippets'
 
+Plug 'rstacruz/vim-hyperstyle'
+
 "" Color
-Plug 'tomasr/molokai'
+" Plug 'tomasr/molokai'
+" Plug 'joshdick/onedark.vim'
+Plug 'tyrannicaltoucan/vim-deep-space'
 
 "*****************************************************************************
 "" Custom bundles
@@ -98,6 +102,7 @@ Plug 'mattn/emmet-vim'
 " javascript
 "" Javascript Bundle
 Plug 'jelera/vim-javascript-syntax'
+Plug 'epilande/vim-react-snippets'
 
 
 " ruby
@@ -132,18 +137,22 @@ set fileencodings=utf-8
 set bomb
 set binary
 
+"" Complete
+" Scan the current buffer, buffers from other windows, Tag completion
+set complete=.,w,t
 
 "" Fix backspace indent
 set backspace=indent,eol,start
 
 "" Tabs. May be overridden by autocmd rules
-set tabstop=4
+set tabstop=2
 set softtabstop=0
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 
 "" Map leader to ,
 let mapleader=','
+let g:mapleader = ","
 
 "" Enable hidden buffers
 set hidden
@@ -157,13 +166,29 @@ set smartcase
 "" Directories for swp files
 set nobackup
 set noswapfile
+set nowb
+
+"" Undo
+" Persistent Undo
+set undofile
+set undodir=~/.config/nvim/undo
 
 set fileformats=unix,dos,mac
 
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+"" Folding
+" Off on start
+set nofoldenable
+" Indent seems to work the best
+set foldmethod=syntax
+
 if exists('$SHELL')
-    set shell=$SHELL
+  set shell=$SHELL
 else
-    set shell=/bin/sh
+  set shell=/bin/sh
 endif
 
 " session management
@@ -180,14 +205,15 @@ set ruler
 set number
 
 let no_buffers_menu=1
-if !exists('g:not_finish_vimplug')
-  colorscheme molokai
-endif
 
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
+
+set background=dark
+set termguicolors
+colorscheme deep-space
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
@@ -250,6 +276,7 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
+cnoreabbrev Qa qa
 
 "" NERDTree configuration
 let g:NERDTreeChDirMode=2
@@ -331,6 +358,15 @@ set autoread
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
+" When pushing j/k on a line that is wrapped, it navigates to the same line,
+" just to the expected location rather than to the next line
+nnoremap j gj
+nnoremap k gk
+
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <c-space> ?
+
 "" Git
 noremap <Leader>ga :Gwrite<CR>
 noremap <Leader>gc :Gcommit<CR>
@@ -355,14 +391,21 @@ nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
 
-"" Set working directory
-nnoremap <leader>. :lcd %:p:h<CR>
+"" Switch between the last two files
+nnoremap <leader><leader> <c-^>
 
-"" Opens an edit command with the path of the currently edited file filled in
-noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+" Save
+map <leader>ww :w<CR>
+map <leader>wq :wq<CR>
 
-"" Opens a tab edit command with the path of the currently edited file filled
-noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+" Quit
+map <leader>qq :q<CR>
+map <leader>qa :qa<CR>
+
+" Search and replace
+noremap <leader>sa :%s:::g<Left><Left>
+noremap <leader>sv :s:::g<Left><Left><Left>
+noremap <leader>s. :.s:::g<Left><Left><Left>
 
 "" fzf.vim
 set wildmode=list:longest,list:full
@@ -387,6 +430,7 @@ let g:fzf_buffers_jump = 1 " Jump to existing buffer if available
 
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>s :Snippets<CR>
 nnoremap <silent> <C-P> :FZF -m<CR>
 nmap <leader><tab> <plug>(fzf-maps-n)
 
@@ -422,33 +466,13 @@ if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
 
-"" Unimpaired
-nmap < [
-nmap > ]
-omap < [
-omap > ]
-xmap < [
-xmap > ]
-
 "" Copy/Paste/Cut
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
-
-noremap YY "+y<CR>
-noremap <leader>p "+gP<CR>
-noremap XX "+x<CR>
-
-if has('macunix')
-  " pbcopy for OSX copy/paste
-  vmap <C-x> :!pbcopy<CR>
-  vmap <C-c> :w !pbcopy<CR><CR>
-endif
+noremap YY "+y
+noremap <leader>p "+gp
+noremap XX "+x
 
 "" Buffer nav
-noremap <leader>z :bp<CR>
 noremap <leader>q :bp<CR>
-noremap <leader>x :bn<CR>
 noremap <leader>w :bn<CR>
 
 "" Close buffer
@@ -492,7 +516,7 @@ let g:javascript_enable_domhtmlcss = 1
 " vim-javascript
 augroup vimrc-javascript
   autocmd!
-  autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4
+  autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2
 augroup END
 
 
@@ -519,10 +543,10 @@ let g:tagbar_type_ruby = {
 \ }
 
 " RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>rt :call RunCurrentSpecFile()<CR>
+map <Leader>rs :call RunNearestSpec()<CR>
+map <Leader>rl :call RunLastSpec()<CR>
+map <Leader>ra :call RunAllSpecs()<CR>
 
 " For ruby refactory
 if has('nvim')
