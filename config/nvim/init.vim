@@ -48,6 +48,10 @@ Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -71,15 +75,11 @@ endif
 if v:version >= 704
   "" Snippets
   Plug 'SirVer/ultisnips'
+
+  Plug 'honza/vim-snippets'
 endif
 
-Plug 'honza/vim-snippets'
-
-Plug 'rstacruz/vim-hyperstyle'
-
 "" Color
-" Plug 'tomasr/molokai'
-" Plug 'joshdick/onedark.vim'
 Plug 'tyrannicaltoucan/vim-deep-space'
 
 "*****************************************************************************
@@ -94,7 +94,6 @@ Plug 'carlosgaldino/elixir-snippets'
 " html
 "" HTML Bundle
 Plug 'hail2u/vim-css3-syntax'
-Plug 'gorodinskiy/vim-coloresque'
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
 
@@ -348,6 +347,15 @@ augroup vimrc-make-cmake
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
+"" word separator
+augroup vimrc-word-separator
+  autocmd!
+  " Allow stylesheets to autocomplete hyphenated words
+  autocmd FileType css,scss,sass,haml,slim,html,jsx set iskeyword+=-
+   " Ruby
+  autocmd FileType ruby set iskeyword+=!
+augroup END
+
 set autoread
 
 "*****************************************************************************
@@ -451,8 +459,18 @@ let g:ale_lint_on_enter = 0
 " navigate between errors quickly
 nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 nmap <silent> <leader>j <Plug>(ale_next_wrap)
+
+" include .jsx in the filetype
+" and extend javascript and html filetypes
+augroup FiletypeGroup
+  autocmd!
+  au BufNewFile,BufRead *.jsx set filetype=javascript.jsx.html
+augroup END
+
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\ 'javascript': ['eslint'],
+\ 'jsx': ['eslint'],
+\ 'css': ['stylelint', 'prettier'],
 \	'html': []
 \}
 
@@ -469,6 +487,7 @@ endif
 "" Copy/Paste/Cut
 noremap YY "+y
 noremap <leader>p "+gp
+noremap <leader>P "+gP
 noremap XX "+x
 
 "" Buffer nav
@@ -614,3 +633,18 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
+
+""""""""""""""""""""""""""""""
+" => Copy current file name (relative/absolute) to system clipboard
+""""""""""""""""""""""""""""""
+" relative path  (src/foo.txt)
+nnoremap <leader>yp :let @*=expand("%")<CR>
+
+" absolute path  (/something/src/foo.txt)
+nnoremap <leader>yP :let @*=expand("%:p")<CR>
+
+" filename       (foo.txt)
+nnoremap <leader>yf :let @*=expand("%:t")<CR>
+
+" directory name (/something/src)
+nnoremap <leader>yd :let @*=expand("%:p:h")<CR>
