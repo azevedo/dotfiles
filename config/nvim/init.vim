@@ -52,6 +52,18 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ervandew/supertab'
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'kana/vim-arpeggio'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'ktonga/vim-follow-my-lead'
+Plug 'mhinz/vim-startify'
+Plug 'skwp/greplace.vim'
+Plug 'wellle/targets.vim'
+Plug 'christoomey/vim-conflicted'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -75,7 +87,6 @@ endif
 if v:version >= 704
   "" Snippets
   Plug 'SirVer/ultisnips'
-
   Plug 'honza/vim-snippets'
 endif
 
@@ -95,7 +106,12 @@ Plug 'carlosgaldino/elixir-snippets'
 "" HTML Bundle
 Plug 'hail2u/vim-css3-syntax'
 Plug 'tpope/vim-haml'
-Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript.jsx'] }
+let g:user_emmet_settings = {
+\  'javascript.jsx': {
+\	   'extends': 'jsx',
+\  },
+\}
 
 
 " javascript
@@ -415,6 +431,11 @@ noremap <leader>sa :%s:::g<Left><Left>
 noremap <leader>sv :s:::g<Left><Left><Left>
 noremap <leader>s. :.s:::g<Left><Left><Left>
 
+" jk | Escaping!
+call arpeggio#map('i', '', 0, 'jk', '<Esc>')
+call arpeggio#map('x', '', 0, 'jk', '<Esc>')
+call arpeggio#map('c', '', 0, 'jk', '<Esc>')
+
 "" fzf.vim
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
@@ -441,12 +462,6 @@ nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>s :Snippets<CR>
 nnoremap <silent> <C-P> :FZF -m<CR>
 nmap <leader><tab> <plug>(fzf-maps-n)
-
-" snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
 
 " Ale
 let g:ale_change_sign_column_color = 1
@@ -635,6 +650,39 @@ else
 endif
 
 """"""""""""""""""""""""""""""
+" => Completion
+""""""""""""""""""""""""""""""
+" Based on https://www.gregjs.com/vim/2016/neovim-deoplete-jspc-ultisnips-and-tern-a-config-for-kickass-autocompletion/
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
+" Set up omnifuncs and sources
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete',
+  \ 'jspc#omni'
+\]
+set completeopt=longest,menuone,preview
+let g:deoplete#sources = {}
+let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
+
+" Use Tab for everything (except UltiSnips)!
+autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" snippets
+" let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<C-j>"
+" let g:UltiSnipsJumpForwardTrigger="<C-n>"
+" let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+let g:UltiSnipsEditSplit="vertical"
+
+" close the preview window when you're not using it
+let g:SuperTabClosePreviewOnPopupClose = 1
+
+""""""""""""""""""""""""""""""
 " => Copy current file name (relative/absolute) to system clipboard
 """"""""""""""""""""""""""""""
 " relative path  (src/foo.txt)
@@ -648,3 +696,17 @@ nnoremap <leader>yf :let @*=expand("%:t")<CR>
 
 " directory name (/something/src)
 nnoremap <leader>yd :let @*=expand("%:p:h")<CR>
+
+" ----------------------------------------------------------------------------
+" splitjoin
+" ----------------------------------------------------------------------------
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping = ''
+nnoremap gss :SplitjoinSplit<cr>
+nnoremap gsj :SplitjoinJoin<cr>
+
+" ----------------------------------------------------------------------------
+" vim-conflicted
+" ----------------------------------------------------------------------------
+" display the version name of each split in the vim statusbar
+set stl+=%{ConflictedVersion()}
