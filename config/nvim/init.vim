@@ -64,6 +64,7 @@ Plug 'mhinz/vim-startify'
 Plug 'skwp/greplace.vim'
 Plug 'wellle/targets.vim'
 Plug 'christoomey/vim-conflicted'
+Plug 'rhysd/devdocs.vim'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -710,3 +711,8 @@ nnoremap gsj :SplitjoinJoin<cr>
 " ----------------------------------------------------------------------------
 " display the version name of each split in the vim statusbar
 set stl+=%{ConflictedVersion()}
+
+" ----------------------------------------------------------------------------
+" devdocs
+" ----------------------------------------------------------------------------
+nmap K <Plug>(devdocs-under-cursor)
