@@ -52,11 +52,13 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'moll/vim-node'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'wokalski/autocomplete-flow'
 Plug 'ervandew/supertab'
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install' }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'kana/vim-arpeggio'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ktonga/vim-follow-my-lead'
@@ -65,6 +67,7 @@ Plug 'skwp/greplace.vim'
 Plug 'wellle/targets.vim'
 Plug 'christoomey/vim-conflicted'
 Plug 'rhysd/devdocs.vim'
+Plug 'shime/vim-livedown'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -436,6 +439,16 @@ noremap <leader>s. :.s:::g<Left><Left><Left>
 call arpeggio#map('i', '', 0, 'jk', '<Esc>')
 call arpeggio#map('x', '', 0, 'jk', '<Esc>')
 call arpeggio#map('c', '', 0, 'jk', '<Esc>')
+"" Move visual block
+call arpeggio#map('i', '', 0, 'dj', ':m .+1<CR>==')
+call arpeggio#map('x', '', 0, 'dj', ':m .+1<CR>==')
+call arpeggio#map('c', '', 0, 'dj', ':m .+1<CR>==')
+call arpeggio#map('i', '', 0, 'dk', ':m .-2<CR>==')
+call arpeggio#map('x', '', 0, 'dk', ':m .-2<CR>==')
+call arpeggio#map('c', '', 0, 'dk', ':m .-2<CR>==')
+" vnoremap <Alt-j> :m '>+1<CR>gv=gv
+" vnoremap <Alt-k> :m '<-2<CR>gv=gv
+
 
 "" fzf.vim
 set wildmode=list:longest,list:full
@@ -472,6 +485,11 @@ let g:ale_sign_warning = '⚠'
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s'
 " navigate between errors quickly
 nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 nmap <silent> <leader>j <Plug>(ale_next_wrap)
@@ -480,13 +498,22 @@ nmap <silent> <leader>j <Plug>(ale_next_wrap)
 " and extend javascript and html filetypes
 augroup FiletypeGroup
   autocmd!
-  au BufNewFile,BufRead *.jsx set filetype=javascript.jsx.html
+  au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 augroup END
 
 let g:ale_linters = {
-\ 'javascript': ['eslint'],
+\ 'javascript': ['eslint', 'flow'],
 \ 'jsx': ['eslint'],
-\ 'css': ['stylelint', 'prettier'],
+\ 'css': ['stylelint'],
+\ 'scss': ['stylelint'],
+\	'html': []
+\}
+
+let g:ale_fixers = {
+\ 'javascript': ['prettier', 'eslint'],
+\ 'jsx': ['eslint'],
+\ 'css': ['stylelint'],
+\ 'scss': ['stylelint'],
 \	'html': []
 \}
 
@@ -526,10 +553,6 @@ noremap <C-h> <C-w>h
 vmap < <gv
 vmap > >gv
 
-"" Move visual block
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
 "" Open current line on GitHub
 nnoremap <Leader>o :.Gbrowse<CR>
 
@@ -547,6 +570,7 @@ autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
+let g:javascript_plugin_flow = 1
 
 " vim-javascript
 augroup vimrc-javascript

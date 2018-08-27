@@ -51,3 +51,5 @@ install_asdf_plugin "elixir" "https://github.com/asdf-vm/asdf-elixir.git"
 fancy_echo "Installing latest Elixir..."
 install_asdf_language "elixir"
 mix local.hex
+
+yarn global add now ngrok --prefix /usr/local

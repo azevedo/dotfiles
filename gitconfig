@@ -16,8 +16,9 @@
   dsf = "!f() { [ -z "$GIT_PREFIX" ] || cd "$GIT_PREFIX" && git diff --color "$@" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
   rim = !git co master && git fetch && git rebase && git co - && git rebase -i master
   done = !git rim && git checkout master && git merge @{-1}
+  dbr = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
   bm = "!git branch --merged | egrep -v \"(^\\*|master|dev)\""
-  dm = "!git bm | xargs -n 1 git nuke"   # delete all merged branches using "git nuke" (git script)
+  dm = "!git bm | xargs -n 1 git dbr "   # delete all merged branches using "git dbr"
   en = "!git edit-new"
   f = fetch
   l = log
