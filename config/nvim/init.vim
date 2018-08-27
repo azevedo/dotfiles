@@ -7,6 +7,9 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
 endif
 
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
 let g:vim_bootstrap_langs = "elixir,html,javascript,ruby"

@@ -34,5 +34,8 @@ bindkey "^N" insert-last-word
 
 export DEFAULT_USER=bruno
 
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
+
 [ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
 eval "$(direnv hook zsh)"
