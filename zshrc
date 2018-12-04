@@ -32,6 +32,8 @@ bindkey "^P" history-search-backward
 bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 
+autoload -U zmv
+
 export DEFAULT_USER=bruno
 
 # eval "$(pyenv init -)"
