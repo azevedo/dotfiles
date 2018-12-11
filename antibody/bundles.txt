@@ -5,7 +5,7 @@ rupa/z
 Tarrasch/zsh-bd
 zsh-users/zsh-completions
 zsh-users/zsh-autosuggestions
-azevedo-252/zsh-files
+azevedo/zsh-files
 
 # these should be at last!
 sindresorhus/pure

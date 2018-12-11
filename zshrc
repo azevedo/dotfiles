@@ -41,3 +41,5 @@ export DEFAULT_USER=bruno
 
 [ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
 eval "$(direnv hook zsh)"
+
+export PATH="$HOME/.bin:$PATH"

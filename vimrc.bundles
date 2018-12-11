@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'terryma/vim-multiple-cursors'
 " Plug 'tpope/vim-dispatch'
 " Plug 'vim-scripts/ctags.vim'
-" Plug 'azevedo-252/vim-angular'
+" Plug 'azevedo/vim-angular'
 " Plug 'rizzatti/dash.vim'
 Plug 'vim-scripts/L9'
 Plug 'chriskempson/base16-vim'

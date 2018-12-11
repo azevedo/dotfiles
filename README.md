@@ -6,7 +6,7 @@ Install
 
 Clone onto your laptop:
 
-    git clone git://github.com/azevedo-252/dotfiles.git ~/dotfiles
+    git clone git://github.com/azevedo/dotfiles.git ~/dotfiles
 
 If not already, install [rcm](https://github.com/thoughtbot/rcm):
 
