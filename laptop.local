@@ -4,23 +4,35 @@ brew tap caskroom/cask
 
 brew cask install iterm2
 brew cask install slack
-brew cask install alfred
+# brew cask install alfred
 brew cask install dropbox
 brew cask install google-chrome
-brew cask install firefox
+# brew cask install firefox
 brew cask install spotify
-brew cask install spotify-notifications
+# brew cask install spotify-notifications
+brew cask install whatsapp
+brew cask install webtorrent
+brew cask install delta
+brew cask install exodus
 brew cask install skype
 brew cask install vlc
 brew cask install caffeine
 brew cask install spectacle
 brew cask install evernote
-brew cask install insomnia
+# brew cask install insomnia
 brew install diff-so-fancy
 brew install tree
-brew install direnv
+# brew install direnv
 brew install neovim
-sudo pip2 install --upgrade neovim # plugins like ultisnips require py >= 2.7 or any py3, so we're installing neovim's Python package since homebrew doesn't do this at the moment; check https://neovim.io/doc/user/provider.html#provider-python for more details
+
+# Correct Installation and Configuration of pip2 and pip3
+# https://www.gungorbudak.com/blog/2018/08/02/correct-installation-and-configuration-of-pip2-and-pip3/
+cd ~/Downloads
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+sudo python get-pip.py
+
+pip2 install --user --upgrade pynvim
+pip3 install --user --upgrade pynvim
 
 gem install rails --no-ri --no-rdoc
 

@@ -34,7 +34,7 @@ bindkey "^N" insert-last-word
 
 autoload -U zmv
 
-export DEFAULT_USER=bruno
+export DEFAULT_USER=brunoazevedo
 
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
@@ -42,4 +42,4 @@ export DEFAULT_USER=bruno
 [ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
 eval "$(direnv hook zsh)"
 
-export PATH="$HOME/.bin:$PATH"
+export PATH="/usr/local/bin:$HOME/.bin:$PATH"
