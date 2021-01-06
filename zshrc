@@ -39,7 +39,14 @@ export DEFAULT_USER=brunoazevedo
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 
-[ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
+# asdf global version manager
+source "$HOME/.asdf/asdf.sh"
+source "$HOME/.asdf/completions/asdf.bash"
+
 eval "$(direnv hook zsh)"
 
-export PATH="/usr/local/bin:$HOME/.bin:$PATH"
+export LC_ALL=en_US.UTF-8
+
+# set yarn binaries on path
+# must be below the .asdf source commands ^
+export PATH="$(yarn global bin):/usr/local/bin:$HOME/.bin:$PATH"

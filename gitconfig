@@ -38,6 +38,7 @@
   s = status
   sta = stash
   stp = stash pop
+  wip = !git add . && git commit --no-verify -m "wip"
 [color]
   ui = true
 [core]
