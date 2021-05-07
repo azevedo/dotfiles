@@ -41,7 +41,6 @@ export DEFAULT_USER=brunoazevedo
 
 # asdf global version manager
 source "$HOME/.asdf/asdf.sh"
-source "$HOME/.asdf/completions/asdf.bash"
 
 eval "$(direnv hook zsh)"
 
