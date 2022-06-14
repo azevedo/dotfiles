@@ -41,6 +41,7 @@ export DEFAULT_USER=brunoazevedo
 
 # asdf global version manager
 source "$HOME/.asdf/asdf.sh"
+source <(antibody init)
 
 eval "$(direnv hook zsh)"
 
@@ -48,4 +49,4 @@ export LC_ALL=en_US.UTF-8
 
 # set yarn binaries on path
 # must be below the .asdf source commands ^
-export PATH="$(yarn global bin):/usr/local/bin:$HOME/.bin:$PATH"
+# export PATH="$(yarn global bin):/usr/local/bin:$HOME/.bin:$PATH"

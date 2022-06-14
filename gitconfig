@@ -17,6 +17,7 @@
   rim = !git co master && git fetch && git rebase && git co - && git rebase -i master
   done = !git rim && git checkout master && git merge @{-1}
   dbr = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
+  dbrs = !sh -c 'git branch --list '$1*' | xargs -n 1 git nuke' -
   bm = "!git branch --merged | egrep -v \"(^\\*|master|dev)\""
   dm = "!git bm | xargs -n 1 git dbr "   # delete all merged branches using "git dbr"
   en = "!git edit-new"
