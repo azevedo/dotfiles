@@ -1,29 +1,33 @@
 #!/bin/sh
 
-brew tap caskroom/cask
-
-brew cask install iterm2
-brew cask install slack
-# brew cask install alfred
-brew cask install dropbox
-brew cask install google-chrome
-# brew cask install firefox
-brew cask install spotify
-# brew cask install spotify-notifications
-brew cask install whatsapp
-brew cask install webtorrent
-brew cask install delta
-brew cask install exodus
-brew cask install skype
-brew cask install vlc
-brew cask install caffeine
-brew cask install spectacle
-brew cask install evernote
-# brew cask install insomnia
-brew install diff-so-fancy
-brew install tree
-# brew install direnv
-brew install neovim
+brew bundle --file=- <<EOF
+brew "amphetamine"
+brew "delta"
+brew "discord"
+brew "docker"
+brew "dropbox"
+brew "evernote"
+brew "exodus"
+brew "firefox"
+brew "google-chrome"
+brew "insomnia"
+brew "iterm2"
+brew "neovim"
+brew "rectangle"
+brew "slack"
+brew "spotify"
+brew "visual-studio-code"
+brew "vlc"
+brew "webtorrent"
+brew "whatsapp"
+brew "figma"
+brew "imageoptim"
+brew "maccy"
+brew "exa"
+brew "ripgrep"
+brew "rapidapi"
+brew "ngrok"
+EOF
 
 # Correct Installation and Configuration of pip2 and pip3
 # https://www.gungorbudak.com/blog/2018/08/02/correct-installation-and-configuration-of-pip2-and-pip3/
@@ -34,34 +38,5 @@ sudo python get-pip.py
 pip2 install --user --upgrade pynvim
 pip3 install --user --upgrade pynvim
 
-gem install rails --no-ri --no-rdoc
-
-# Elixir
-install_asdf_plugin() {
-  local name="$1"
-  local url="$2"
-
-  if ! asdf plugin-list | grep -Fq "$name"; then
-    asdf plugin-add "$name" "$url"
-  fi
-}
-
-install_asdf_language() {
-  local language="$1"
-  local version
-  version="$(asdf list-all "$language" | tail -1)"
-
-  if ! asdf list "$language" | grep -Fq "$version"; then
-    asdf install "$language" "$version"
-    asdf global "$language" "$version"
-  fi
-}
-
-source "$HOME/.asdf/asdf.sh"
-install_asdf_plugin "elixir" "https://github.com/asdf-vm/asdf-elixir.git"
-
-fancy_echo "Installing latest Elixir..."
-install_asdf_language "elixir"
-mix local.hex
-
-yarn global add now ngrok --prefix /usr/local
+gem install rails -no-document
+ 
