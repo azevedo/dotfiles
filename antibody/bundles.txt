@@ -1,6 +1,5 @@
 # this block is in alphabetic order
 caarlos0/ports kind:path
-mafredri/zsh-async
 rupa/z
 Tarrasch/zsh-bd
 zsh-users/zsh-completions
