@@ -4,24 +4,15 @@ DOTFILES="$HOME/dotfiles"
 
 touch "$HOME"/.psqlrc.local
 
-# if [ -e "$HOME"/.vim/autoload/plug.vim ]; then
-#   vim -E -s +PlugUpgrade +qa
-# else
-#   curl -fLo "$HOME"/.vim/autoload/plug.vim --create-dirs \
-#       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-# fi
-# vim -u "$HOME"/.vimrc.bundles +PlugUpdate +PlugClean! +qa
-#
-# [ -d $HOME/.vim/undo ] || mkdir $HOME/.vim/undo
-
-# install antibody
+# install antidote
 if which brew >/dev/null 2>&1; then
-	brew install getantibody/tap/antibody || brew upgrade antibody
+	brew install antidote || brew upgrade antidote
 else
-	curl -sL https://git.io/antibody | sh -s
+	git clone --depth=1 https://github.com/mattmc3/antidote.git $HOME/.antidote
+	
 fi
-antibody bundle <"$DOTFILES/antibody/bundles.txt" >~/.zsh_plugins.sh
-antibody update
+# antibody bundle <"$DOTFILES/antibody/bundles.txt" >~/.zsh_plugins.sh
+# antibody update
 
 [ "$(uname -s)" != "Darwin" ] && exit 0
 sed -i ''  "s;/Users/brunoazevedo;$HOME;g" \
@@ -29,4 +20,4 @@ sed -i ''  "s;/Users/brunoazevedo;$HOME;g" \
 defaults write com.googlecode.iterm2 "PrefsCustomFolder" -string "$DOTFILES/iterm2"
 defaults write com.googlecode.iterm2 "LoadPrefsFromCustomFolder" -bool true
 
-cp "$DOTFILES"/iterm2/fonts/**/*.ttf "$HOME"/Library/Fonts
+# cp "$DOTFILES"/iterm2/fonts/**/*.ttf "$HOME"/Library/Fonts

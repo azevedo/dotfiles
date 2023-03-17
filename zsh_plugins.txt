@@ -1,0 +1,19 @@
+#
+# .zsh_plugins.txt - antidote plugins file
+#
+
+### Regular Plugins
+rupa/z
+Tarrasch/zsh-bd
+azevedo/zsh-files
+
+### Prompts
+romkatv/powerlevel10k kind:fpath
+
+### Completions
+zsh-users/zsh-completions
+
+### Final Plugins
+zsh-users/zsh-autosuggestions kind:defer
+zdharma-continuum/fast-syntax-highlighting kind:defer
+zsh-users/zsh-history-substring-search
