@@ -27,6 +27,7 @@ brew "exa"
 brew "ripgrep"
 brew "rapidapi"
 brew "ngrok"
+brew "direnv"
 EOF
 
 # Correct Installation and Configuration of pip2 and pip3
