@@ -14,8 +14,10 @@ unsetopt NOMATCH
 
 export DEFAULT_USER=brunoazevedo
 
-# asdf global version manager
-source "$HOME/.asdf/asdf.sh"
+export PATH="$HOME/.bin:$PATH"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+source /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # load antidote plugins
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
