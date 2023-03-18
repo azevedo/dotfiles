@@ -30,6 +30,7 @@ brew "ripgrep"
 cask "rapidapi"
 cask "ngrok"
 brew "direnv"
+brew "ctgas"
 EOF
 
 gem install rails -no-document
