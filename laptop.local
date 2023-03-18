@@ -1,43 +1,35 @@
 #!/bin/sh
 
+
 brew bundle --file=- <<EOF
-brew "amphetamine"
+tap "homebrew/cask"
+cask "amphetamine"
 brew "delta"
-brew "discord"
+cask "discord"
 brew "docker"
-brew "dropbox"
-brew "evernote"
-brew "exodus"
-brew "firefox"
-brew "google-chrome"
-brew "insomnia"
-brew "iterm2"
+cask "dropbox"
+cask "evernote"
+cask "exodus"
+cask "firefox"
+cask "google-chrome"
+cask "insomnia"
+cask "iterm2"
 brew "neovim"
-brew "rectangle"
-brew "slack"
-brew "spotify"
-brew "visual-studio-code"
-brew "vlc"
-brew "webtorrent"
-brew "whatsapp"
-brew "figma"
-brew "imageoptim"
-brew "maccy"
+cask "rectangle"
+cask "slack"
+cask "spotify"
+cask "visual-studio-code"
+cask "vlc"
+cask "webtorrent"
+cask "whatsapp"
+cask "figma"
+cask "imageoptim"
+cask "maccy"
 brew "exa"
 brew "ripgrep"
-brew "rapidapi"
-brew "ngrok"
+cask "rapidapi"
+cask "ngrok"
 brew "direnv"
 EOF
 
-# Correct Installation and Configuration of pip2 and pip3
-# https://www.gungorbudak.com/blog/2018/08/02/correct-installation-and-configuration-of-pip2-and-pip3/
-cd ~/Downloads
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-sudo python get-pip.py
-
-pip2 install --user --upgrade pynvim
-pip3 install --user --upgrade pynvim
-
 gem install rails -no-document
- 
