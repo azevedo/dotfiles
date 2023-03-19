@@ -8,4 +8,4 @@ if which brew >/dev/null 2>&1; then
 else
 	git clone --depth=1 https://github.com/mattmc3/antidote.git $HOME/.antidote
 fi
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+[[ -d "~/powerlevel10k/" ]] && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
