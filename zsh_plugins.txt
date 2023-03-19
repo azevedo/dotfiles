@@ -8,7 +8,6 @@ Tarrasch/zsh-bd
 azevedo/zsh-files
 
 ### Prompts
-romkatv/powerlevel10k kind:fpath
 
 ### Completions
 zsh-users/zsh-completions

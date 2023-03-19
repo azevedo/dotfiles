@@ -7,5 +7,5 @@ if which brew >/dev/null 2>&1; then
 	brew install antidote || brew upgrade antidote
 else
 	git clone --depth=1 https://github.com/mattmc3/antidote.git $HOME/.antidote
-	
 fi
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k

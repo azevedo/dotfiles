@@ -17,7 +17,6 @@
   co = checkout
   conflicts = diff --name-only --diff-filter=U
   d = diff
-  dsf = "!f() { [ -z "$GIT_PREFIX" ] || cd "$GIT_PREFIX" && git diff --color "$@" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
   rim = !git co main && git fetch && git rebase && git co - && git rebase -i main
   done = !git rim && git checkout main && git merge @{-1}
   donef = !git rim && git push -f && git checkout main && git merge @{-1}

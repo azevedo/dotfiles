@@ -31,6 +31,10 @@ cask "rapidapi"
 cask "ngrok"
 brew "direnv"
 brew "ctgas"
+cask "deepl"
+cask "flux"
+cask "microsoft-edge"
+cask "stremio"
 EOF
 
 gem install rails -no-document
