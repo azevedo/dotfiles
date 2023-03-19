@@ -4,7 +4,7 @@
 brew bundle --file=- <<EOF
 tap "homebrew/cask"
 cask "amphetamine"
-brew "delta"
+brew "git-delta"
 cask "discord"
 brew "docker"
 cask "dropbox"
