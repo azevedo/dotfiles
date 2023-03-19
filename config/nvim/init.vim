@@ -1,4 +1,4 @@
-" vim-bootstrap 2023-03-18 11:51:39
+" vim-bootstrap 2023-03-18 13:00:18
 
 "*****************************************************************************
 "" Vim-Plug core
@@ -12,7 +12,6 @@ endif
 
 let g:vim_bootstrap_langs = "elixir,html,javascript,ruby,typescript"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
-let g:vim_bootstrap_theme = ""
 let g:vim_bootstrap_frams = ""
 
 if !filereadable(vimplug_exists)
@@ -38,7 +37,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
@@ -63,8 +61,9 @@ Plug 'wellle/targets.vim'
 Plug 'christoomey/vim-conflicted'
 Plug 'rhysd/devdocs.vim'
 Plug 'shime/vim-livedown'
-"" Color
+Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'tyrannicaltoucan/vim-deep-space'
+
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -74,7 +73,7 @@ else
 endif
 let g:make = 'gmake'
 if exists('make')
-  let g:make = 'make'
+        let g:make = 'make'
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
@@ -103,7 +102,7 @@ Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
 let g:user_emmet_settings = {
 \  'javascript.jsx': {
-\	   'extends': 'jsx',
+\  'extends': 'jsx',
 \  },
 \}
 
@@ -198,9 +197,9 @@ set nofoldenable
 set foldmethod=syntax
 
 if exists('$SHELL')
-  set shell=$SHELL
+    set shell=$SHELL
 else
-  set shell=/bin/sh
+    set shell=/bin/sh
 endif
 
 " session management
@@ -221,7 +220,8 @@ set background=dark
 set termguicolors
 colorscheme deep-space
 
-" Better command line completion
+
+" Better command line completion 
 set wildmenu
 
 " mouse support
@@ -245,6 +245,8 @@ else
   let g:indentLine_concealcursor = ''
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
+
+  
 endif
 
 
@@ -269,14 +271,19 @@ set titlestring=%F
 
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\
 
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
 
 " vim-airline
 let g:airline_theme = 'powerlineish'
-let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
@@ -365,7 +372,7 @@ augroup vimrc-make-cmake
   autocmd FileType make setlocal noexpandtab
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
-q
+
 "" word separator
 augroup vimrc-word-separator
   autocmd!
@@ -508,7 +515,7 @@ let g:ale_linters = {
 \ 'jsx': ['eslint'],
 \ 'css': ['stylelint'],
 \ 'scss': ['stylelint'],
-\	'html': []
+\      'html': []
 \}
 
 let g:ale_fixers = {
@@ -516,7 +523,7 @@ let g:ale_fixers = {
 \ 'jsx': ['eslint'],
 \ 'css': ['stylelint'],
 \ 'scss': ['stylelint'],
-\	'html': []
+\ 'html': []
 \}
 
 " Tagbar
@@ -530,10 +537,19 @@ if has('autocmd')
 endif
 
 "" Copy/Paste/Cut
-noremap YY "+y
-noremap <leader>p "+gp
-noremap <leader>P "+gP
-noremap XX "+x
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
+
+noremap YY "+y<CR>
+noremap <leader>p "+gP<CR>
+noremap XX "+x<CR>
+
+if has('macunix')
+  " pbcopy for OSX copy/paste
+  vmap <C-x> :!pbcopy<CR>
+  vmap <C-c> :w !pbcopy<CR><CR>
+endif
 
 "" Buffer nav
 noremap <leader>q :bp<CR>
@@ -572,12 +588,11 @@ autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
-let g:javascript_plugin_flow = 1
 
 " vim-javascript
 augroup vimrc-javascript
   autocmd!
-  autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2
+  autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
 augroup END
 
 
