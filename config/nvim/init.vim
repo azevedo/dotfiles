@@ -73,7 +73,7 @@ else
 endif
 let g:make = 'gmake'
 if exists('make')
-        let g:make = 'make'
+  let g:make = 'make'
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
@@ -197,9 +197,9 @@ set nofoldenable
 set foldmethod=syntax
 
 if exists('$SHELL')
-    set shell=$SHELL
+  set shell=$SHELL
 else
-    set shell=/bin/sh
+  set shell=/bin/sh
 endif
 
 " session management
@@ -219,7 +219,6 @@ let no_buffers_menu=1
 set background=dark
 set termguicolors
 colorscheme deep-space
-
 
 " Better command line completion 
 set wildmenu
@@ -245,8 +244,6 @@ else
   let g:indentLine_concealcursor = ''
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
-
-  
 endif
 
 
@@ -537,19 +534,10 @@ if has('autocmd')
 endif
 
 "" Copy/Paste/Cut
-if has('unnamedplus')
-  set clipboard=unnamed,unnamedplus
-endif
-
-noremap YY "+y<CR>
-noremap <leader>p "+gP<CR>
-noremap XX "+x<CR>
-
-if has('macunix')
-  " pbcopy for OSX copy/paste
-  vmap <C-x> :!pbcopy<CR>
-  vmap <C-c> :w !pbcopy<CR><CR>
-endif
+noremap YY "+y
+noremap <leader>p "+gp
+noremap <leader>P "+gP
+noremap XX "+x
 
 "" Buffer nav
 noremap <leader>q :bp<CR>
