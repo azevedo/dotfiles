@@ -3,7 +3,6 @@
 
 brew bundle --file=- <<EOF
 tap "homebrew/cask"
-cask "amphetamine"
 brew "git-delta"
 cask "discord"
 brew "docker"
@@ -27,14 +26,14 @@ cask "imageoptim"
 cask "maccy"
 brew "exa"
 brew "ripgrep"
-cask "rapidapi"
 cask "ngrok"
 brew "direnv"
-brew "ctgas"
+brew "ctags"
 cask "deepl"
 cask "flux"
 cask "microsoft-edge"
 cask "stremio"
+cask "todoist"
 EOF
 
 gem install rails -no-document
