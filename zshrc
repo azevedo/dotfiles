@@ -28,7 +28,9 @@ source /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # load antidote plugins
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+# initialize plygins statically with ~/.zsh_pkugins.txt
 antidote load
+
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 eval "$(direnv hook zsh)"
