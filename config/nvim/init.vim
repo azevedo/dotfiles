@@ -550,17 +550,26 @@ noremap <leader>c :bd<CR>
 nnoremap <silent> <leader><space> :noh<cr>
 
 "" Switching windows
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-h> <C-w>h
+if exists('g:vscode')
+  " VSCode extension
+  noremap <C-j> <Cmd>call VSCodeNotify('workbench.action.focusBelowGroup')<CR>
+  noremap <C-k> <Cmd>call VSCodeNotify('workbench.action.focusAboveGroup')<CR>
+  noremap <C-l> <Cmd>call VSCodeNotify('workbench.action.focusRightGroup')<CR>
+  noremap <C-h> <Cmd>call VSCodeNotify('workbench.action.focusLeftGroup')<CR>
+else
+  noremap <C-j> <C-w>j
+  noremap <C-k> <C-w>k
+  noremap <C-l> <C-w>l
+  noremap <C-h> <C-w>h
+endif
+
 
 "" Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
 vmap > >gv
 
 "" Open current line on GitHub
-nnoremap <Leader>o :.Gbrowse<CR>
+nnoremap <Leader>o :.GBrowse<CR>
 
 "*****************************************************************************
 "" Custom configs
