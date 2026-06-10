@@ -10,7 +10,7 @@ else
   let curl_exists=expand('curl')
 endif
 
-let g:vim_bootstrap_langs = "elixir,html,javascript,ruby,typescript"
+let g:vim_bootstrap_langs = "html,javascript,typescript"
 let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 let g:vim_bootstrap_frams = ""
 
@@ -89,11 +89,6 @@ Plug 'honza/vim-snippets'
 "" Custom bundles
 "*****************************************************************************
 
-" elixir
-Plug 'elixir-lang/vim-elixir'
-Plug 'carlosgaldino/elixir-snippets'
-
-
 " html
 "" HTML Bundle
 Plug 'hail2u/vim-css3-syntax'
@@ -111,14 +106,6 @@ let g:user_emmet_settings = {
 "" Javascript Bundle
 Plug 'jelera/vim-javascript-syntax'
 Plug 'epilande/vim-react-snippets'
-
-
-" ruby
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-projectionist'
-Plug 'thoughtbot/vim-rspec'
-Plug 'ecomba/vim-ruby-refactoring', {'tag': 'main'}
 
 
 " typescript
@@ -375,8 +362,6 @@ augroup vimrc-word-separator
   autocmd!
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass,haml,slim,html,jsx set iskeyword+=-
-   " Ruby
-  autocmd FileType ruby set iskeyword+=!
 augroup END
 
 set autoread
@@ -591,53 +576,6 @@ augroup vimrc-javascript
   autocmd!
   autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
 augroup END
-
-
-" ruby
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
-
-augroup vimrc-ruby
-  autocmd!
-  autocmd BufNewFile,BufRead *.rb,*.rbw,*.gemspec setlocal filetype=ruby
-  autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2
-augroup END
-
-let g:tagbar_type_ruby = {
-    \ 'kinds' : [
-        \ 'm:modules',
-        \ 'c:classes',
-        \ 'd:describes',
-        \ 'C:contexts',
-        \ 'f:methods',
-        \ 'F:singleton methods'
-    \ ]
-\ }
-
-" RSpec.vim mappings
-map <Leader>rt :call RunCurrentSpecFile()<CR>
-map <Leader>rs :call RunNearestSpec()<CR>
-map <Leader>rl :call RunLastSpec()<CR>
-map <Leader>ra :call RunAllSpecs()<CR>
-
-" For ruby refactory
-if has('nvim')
-  runtime! macros/matchit.vim
-else
-  packadd! matchit
-endif
-
-" Ruby refactory
-nnoremap <leader>rap  :RAddParameter<cr>
-nnoremap <leader>rcpc :RConvertPostConditional<cr>
-nnoremap <leader>rel  :RExtractLet<cr>
-vnoremap <leader>rec  :RExtractConstant<cr>
-vnoremap <leader>relv :RExtractLocalVariable<cr>
-nnoremap <leader>rit  :RInlineTemp<cr>
-vnoremap <leader>rrlv :RRenameLocalVariable<cr>
-vnoremap <leader>rriv :RRenameInstanceVariable<cr>
-vnoremap <leader>rem  :RExtractMethod<cr>
 
 
 " typescript
