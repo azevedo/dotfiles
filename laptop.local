@@ -35,5 +35,3 @@ cask "microsoft-edge"
 cask "stremio"
 cask "todoist"
 EOF
-
-gem install rails -no-document
